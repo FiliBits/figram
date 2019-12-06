@@ -1,0 +1,28 @@
+{
+  "name": "figram",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "now-build": "yarn run build",
+    "build": "webpack",
+    "dev": "webpack-dev-server"
+  },
+  "repository": "https://github.com/midudev/curso-platzi-react-avanzado.git",
+  "author": "Fili Santillán <fili06604@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^4.4.1"
+  }
+}
