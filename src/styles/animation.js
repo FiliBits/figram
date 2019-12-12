@@ -1,4 +1,4 @@
-import {keyframes, css } from "styled-components";
+import { keyframes, css } from "styled-components";
 
 const fadeInKeyframes = keyframes`
   from {
@@ -12,7 +12,24 @@ const fadeInKeyframes = keyframes`
   }
 `;
 
+const BounceKeyframes = keyframes`
+  0%, 100% {
+    transform: scale(0,0);
+  }
+
+  50% {
+    transform: scale(0.8);
+  }
+`;
+
 export const fadeIn = ({ time = "1s", type = "ease" } = {}) =>
   css`
     animation: ${time} ${fadeInKeyframes} ${type};
   `;
+
+export const BounceAnimation = ({
+  time = "2s",
+  type = "ease-in-out"
+} = {}) => css`
+  animation: ${time} ${BounceKeyframes} infinite ${type};
+`;
