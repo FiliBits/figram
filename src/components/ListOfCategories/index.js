@@ -1,38 +1,58 @@
 import React, { useEffect, useState } from "react";
-import { Category } from "../Category";
 
 import { List, Item } from "./styles";
 
-export const ListOfCategories = () => {
+import { Loader } from "../Loader";
+import { Category } from "../Category";
+
+
+
+function useCategoriesData() {
   const [categories, setCategories] = useState([]);
-  const [showFixed, setShowFixed] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(function() {
-    window.fetch("https://figram-server.now.sh/categories")
+    setLoading(true);
+    window
+      .fetch("https://figram-server.now.sh/categories")
       .then(res => res.json())
       .then(response => {
-        setCategories(response)
-      })
+        setCategories(response);
+        setLoading(false);
+      });
   }, []);
+  return { categories, loading };
+}
 
-  useEffect(function() {
-    const onScroll = e => {
-      const newShowFixed = window.scrollY > 200;
-      showFixed !== newShowFixed && setShowFixed(newShowFixed);
-    }
+export const ListOfCategories = () => {
+  const [showFixed, setShowFixed] = useState(false);
+  const { categories, loading } = useCategoriesData();
 
-    document.addEventListener("scroll", onScroll);
+  useEffect(
+    function() {
+      const onScroll = e => {
+        const newShowFixed = window.scrollY > 200;
+        showFixed !== newShowFixed && setShowFixed(newShowFixed);
+      };
 
-    return () => document.removeEventListener("scroll", onScroll);
-  }, [showFixed]);
+      document.addEventListener("scroll", onScroll);
 
-  const renderList = (fixed) => (
-    <List className={fixed ? "fixed" : ""}>
-      {categories.map(category => ( 
-        <Item key={category.id}>
-          <Category {...category} />
-        </Item>
-      ))}
+      return () => document.removeEventListener("scroll", onScroll);
+    },
+    [showFixed]
+  );
+
+  const renderList = fixed => (
+    <List fixed={fixed}>
+      {loading ? (
+        <Loader />
+      ) : (
+        categories.map(category => (
+          <Item key={category.id}>
+            <Category {...category} />
+          </Item>
+        ))
+      )}
     </List>
   );
 
@@ -41,6 +61,5 @@ export const ListOfCategories = () => {
       {renderList()}
       {showFixed && renderList(true)}
     </React.Fragment>
-  )
-}
-
+  );
+};
