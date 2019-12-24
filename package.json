@@ -5,7 +5,7 @@
   "scripts": {
     "now-build": "yarn run build",
     "build": "webpack",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --history-api--fallback"
   },
   "repository": "https://github.com/midudev/curso-platzi-react-avanzado.git",
   "author": "Fili Santillán <fili06604@gmail.com>",
@@ -21,6 +21,7 @@
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "apollo-boost": "^0.4.7",
     "graphql": "^14.5.8",
     "intersection-observer": "^0.7.0",

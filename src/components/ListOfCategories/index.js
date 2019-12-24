@@ -5,8 +5,6 @@ import { List, Item } from "./styles";
 import { Loader } from "../Loader";
 import { Category } from "../Category";
 
-
-
 function useCategoriesData() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -49,7 +47,7 @@ export const ListOfCategories = () => {
       ) : (
         categories.map(category => (
           <Item key={category.id}>
-            <Category {...category} />
+            <Category {...category} path={`/pet/${category.id}`}/>
           </Item>
         ))
       )}
