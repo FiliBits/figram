@@ -5,7 +5,9 @@
   "scripts": {
     "now-build": "yarn run build",
     "build": "webpack",
-    "dev": "webpack-dev-server --history-api--fallback"
+    "dev": "webpack-dev-server --history-api--fallback",
+    "serve:dev": "webpack --mode 'development' && npx serve dist -s",
+    "test": "cypress open"
   },
   "repository": "https://github.com/midudev/curso-platzi-react-avanzado.git",
   "author": "Fili Santillán <fili06604@gmail.com>",
@@ -15,21 +17,26 @@
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
+    "cypress": "^3.8.3",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.17.0",
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "webpack-dev-server": "^3.9.0",
+    "webpack-pwa-manifest": "^4.1.1",
+    "workbox-webpack-plugin": "^5.0.0"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
     "apollo-boost": "^0.4.7",
     "graphql": "^14.5.8",
     "intersection-observer": "^0.7.0",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-apollo": "^3.1.3",
     "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
     "react-icons": "^3.8.0",
     "styled-components": "^4.4.1"
   }

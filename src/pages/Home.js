@@ -1,13 +1,22 @@
 import React from "react";
 
+import { Layout } from "../components/Layout";
+
 import { ListOfCategories } from "../components/ListOfCategories";
 import { ListOfPhotoCardsWithQuery } from "../container/ListOfPhotoCardsWithQuery";
 
-export const Home = ({ id }) => {
+const HomePage = ({ id }) => {
   return (
-    <React.Fragment>
+    <Layout
+      title="Tu app de fotos"
+      subtitle="Con figram puedes encontrar muchas fotos"
+    >
       <ListOfCategories />
       <ListOfPhotoCardsWithQuery categoryId={id} />
-    </React.Fragment>
+    </Layout>
   );
-}
+};
+
+export const Home = React.memo(HomePage, (prevProps, props) => {
+  return prevProps.id == props.id
+});
